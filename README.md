@@ -11,6 +11,7 @@
 
 ## Commands
 
+- `nest generate --help`
 - `npm run start:dev` / `yarn start:dev`
 - `nest generate controller` / `nest g co`
 - `nest generate service` / `nest g s`
