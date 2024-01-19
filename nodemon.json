@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore": ["*.test.js", "**/fixtures/**"],
+  "ext":"ts",
+  "watch":["src"],
+  "execMap": "node --inspect=0.0.0.0:5858 -r ts-node/register ./src/main.ts"
+}

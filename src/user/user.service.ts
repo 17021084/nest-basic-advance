@@ -1,26 +1,47 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { User } from './interface/user';
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  public users: User[] = [];
+  getUsers(): User[] {
+    return this.users;
   }
 
-  findAll() {
-    return `This action returns all user`;
+  getUser(email: string): User {
+    const user = this.users.filter((user) => user.email === email);
+    if (user.length > 0) {
+      return user[0];
+    }
+    throw new NotFoundException('User not found');
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  addUser(user: User): User {
+    this.users.push(user);
+    return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  updateUser(email: string, name: string): User {
+    let found: boolean = false;
+    let udatedUser: User;
+    this.users = this.users.filter((user) => {
+      if (user.email === email) {
+        user.name = name;
+        found = true;
+        udatedUser = user;
+      }
+    });
+    if (found) {
+      return udatedUser;
+    }
+    throw new NotFoundException('User not found');
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  deleteUser(email: string): User[] {
+    const userRemain = this.users.filter((user) => user.email !== email);
+    this.users = userRemain;
+    return userRemain;
   }
+
+
+
 }

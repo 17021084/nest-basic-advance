@@ -31,5 +31,15 @@
 - `@IsNumber()`, `@IsString()`: Validations
 
 ## Imports
+
 - `import { Body, Controller, Get, Param, Post } from '@nestjs/common';`
 - `import { IsNumber, IsString } from 'class-validator';` - Validation
+
+## Run project with nodemon
+
+```
+yarn run debug
+it will run nodemon
+node --inspect=0.0.0.0:5858 -r ts-node/register ./src/main.ts
+build and run
+```
