@@ -7,8 +7,8 @@ export class UserService {
     return this.users;
   }
 
-  getUser(email: string): User {
-    const user = this.users.filter((user) => user.email === email);
+  getUser(id: number): User {
+    const user = this.users.filter((user) => user.id === id);
     if (user.length > 0) {
       return user[0];
     }

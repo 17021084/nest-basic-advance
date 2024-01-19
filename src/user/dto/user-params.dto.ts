@@ -1,4 +1,10 @@
-import { IsDefined, IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsDefined,
+  IsEmail,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class UserParamsDto {
   @IsString()
@@ -6,4 +12,9 @@ export class UserParamsDto {
   @IsNotEmpty()
   @IsDefined()
   email: string;
+  
+  @IsDefined()
+  @IsNotEmpty()
+  @IsNumber()
+  id: number;
 }
