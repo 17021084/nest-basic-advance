@@ -15,9 +15,9 @@ export class UserService {
     throw new NotFoundException('User not found');
   }
 
-  addUser(user: User): User {
+  addUser(user: User): Promise<User> {
     this.users.push(user);
-    return user;
+    return Promise.resolve(user);
   }
 
   updateUser(email: string, name: string): User {
@@ -41,7 +41,4 @@ export class UserService {
     this.users = userRemain;
     return userRemain;
   }
-
-
-
 }
